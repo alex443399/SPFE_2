@@ -43,12 +43,13 @@ Full_order_model_discrete = Get_discrete_time_model(number_of_generators, ...
 
 
 %% Simulating
-y = lsim(Full_order_model_discrete, input_signal_power_in_watts);
+[x_simulation_state, t_span, ~]= lsim(Full_order_model_discrete, input_signal_power_in_watts);
+t_span_hr = t_span/3600;
 %% Plotting results
-plot(y())
+plot(x_simulation_state())
 %% Plot to compare with input
 figure
 subplot(2,1,1)
-plot(y())
+plot(x_simulation_state())
 subplot(2,1,2)
 plot(input_signal_power_in_watts')
